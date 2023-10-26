@@ -52,13 +52,11 @@ app.use((req, res, next) => {
 // Route for fetching weather data
 app.get("/weather", async (req, res) => {
   try {
-    console.log("Request Param ==> ", req);
     const { zipcode } = req.query;
     const weatherStackApiKey = "610acf4c1d203448cd6f671955c5e8aa";
     const response = await axios.get(
       `http://api.weatherstack.com/current?access_key=${weatherStackApiKey}&query=${zipcode},ho%20chi%20%minh`
     );
-    console.log("response ==> ", response);
     res.json(response.data);
   } catch (error) {
     console.error(error);

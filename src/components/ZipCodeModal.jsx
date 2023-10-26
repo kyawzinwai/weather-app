@@ -8,7 +8,6 @@ function ZipCodeModal({ isOpen, onRequestClose, onZipCodeSubmit }) {
   const [zipCode, setZipCode] = useState("");
 
   const handleSubmit = (e) => {
-    console.log("zipCode data ==> Inpu ", zipCode);
     e.preventDefault();
     onZipCodeSubmit(zipCode);
     setZipCode("");

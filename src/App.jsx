@@ -13,8 +13,8 @@ function App() {
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.weather);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [expandedItems, setExpandedItems] = useState([]); // Track expanded FAQ items
-  const [answers, setAnswers] = useState([]); // Track expanded FAQ items
+  const [expandedItems, setExpandedItems] = useState([]);
+  const [answers, setAnswers] = useState([]);
 
   useEffect(() => {
     let rainingMessage, sunscreenMessage, windMessage;
@@ -54,11 +54,6 @@ function App() {
     closeModal();
   };
 
-  // const toggleAnswer = (index) => {
-  //   const faqItem = document.getElementById(`faqItem-${index}`);
-  //   console.log('Click', faqItem);
-  //   faqItem.classList.toggle('active');
-  // };
   const toggleAnswer = (index) => {
     if (expandedItems.includes(index)) {
       // Item is expanded, so collapse it
@@ -84,17 +79,6 @@ function App() {
         {data && (
           <div>
             <h2>Weather Information</h2>
-            <div>
-              {data.current.weather_icons &&
-                data.current.weather_icons.length > 0 && (
-                  <img
-                    src={data.current.weather_icons[0]}
-                    alt={data.current.weather_descriptions[0]}
-                    className="weather-icon"
-                  />
-                )}
-              <p>{data?.current?.weather_descriptions[0]}</p>
-            </div>
             <p>Location: {data.location.name}</p>
             <p>Temperature: {data.current.temperature}°C</p>
           </div>
