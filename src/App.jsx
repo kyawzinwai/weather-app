@@ -4,8 +4,9 @@ import { fetchWeather } from "./store/weatherSlice";
 import ZipCodeModal from "./components/ZipCodeModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusSquare, faMinusSquare } from "@fortawesome/free-solid-svg-icons";
+
 import "./styles/WeatherScreen.css";
-import faqData from "./mock/FAQ"; // Import faqData as a default export
+import faqData from "./mock/FAQ";
 
 function App() {
   const noData =
@@ -95,10 +96,8 @@ function App() {
                 {item.question}
                 <span className="arrow">
                   {expandedItems.includes(index) ? (
-                    // Arrow-up icon when item is expanded
                     <FontAwesomeIcon icon={faMinusSquare} />
                   ) : (
-                    // Arrow-down icon when item is collapsed
                     <FontAwesomeIcon icon={faPlusSquare} />
                   )}
                 </span>
