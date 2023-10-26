@@ -22,8 +22,12 @@ function ZipCodeModal({ isOpen, onRequestClose, onZipCodeSubmit }) {
     >
       <h3>Enter ZIP Code</h3>
       <form onSubmit={handleSubmit}>
+        <div class="input-group-append">
+          <span class="inputHelperTxt">* Input only numbers</span>
+        </div>
         <input
           autoFocus
+          required
           className="inputZip"
           type="text"
           inputMode="numeric"
@@ -32,7 +36,7 @@ function ZipCodeModal({ isOpen, onRequestClose, onZipCodeSubmit }) {
           onChange={(e) => setZipCode(e.target.value)}
           placeholder="ZIP Code"
         />
-        <button disabled={zipCode.length < 5 ? true : false} className="btnSubmit" type="submit">Submit</button>
+        <button className="btnSubmit" type="submit">Submit</button>
       </form>
     </Modal>
   );
