@@ -9,8 +9,7 @@ import "./styles/WeatherScreen.css";
 import faqData from "./mock/FAQ";
 
 function App() {
-  const noData =
-    "No data to calculate. Please get the weather data by entering the zipcode.";
+  const noData = "No data to calculate. Please get the weather data by entering the zipcode.";
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state.weather);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -57,10 +56,8 @@ function App() {
 
   const toggleAnswer = (index) => {
     if (expandedItems.includes(index)) {
-      // Item is expanded, so collapse it
       setExpandedItems(expandedItems.filter((item) => item !== index));
     } else {
-      // Item is collapsed, so expand it
       setExpandedItems([...expandedItems, index]);
     }
   };
