@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
-import Modal from 'react-modal';
-import '../styles/ZipCodeModal.css';
+import React, { useState } from "react";
+import Modal from "react-modal";
+import "../styles/ZipCodeModal.css";
 
-Modal.setAppElement('#root');
+Modal.setAppElement("#root");
 
 function ZipCodeModal({ isOpen, onRequestClose, onZipCodeSubmit }) {
-  const [zipCode, setZipCode] = useState('');
+  const [zipCode, setZipCode] = useState("");
 
   const handleSubmit = (e) => {
+    console.log("zipCode data ==> Inpu ", zipCode);
     e.preventDefault();
     onZipCodeSubmit(zipCode);
-    setZipCode('');
+    setZipCode("");
   };
 
   return (

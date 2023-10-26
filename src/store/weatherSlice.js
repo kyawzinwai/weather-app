@@ -10,6 +10,7 @@ const initialState = {
 
 export const fetchWeather = createAsyncThunk('weather/fetchWeather', async (zipcode, { rejectWithValue }) => {
   try {
+    console.log('Pass param ==> ', zipcode);
     const response = await axios.get(`http://localhost:3100/weather?zipcode=${zipcode}`);
     console.log('Response ==> ', JSON.stringify(response, null, 2));
     return response.data;

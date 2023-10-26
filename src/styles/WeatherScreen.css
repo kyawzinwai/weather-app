@@ -6,9 +6,11 @@
 }
 .btnEnterZipCode {
   background-color: #eb8634;
+  color: white;
+  font-weight: bold;
 }
 .txtError {
-  color: red
+  color: red;
 }
 .faqContainer {
   margin-top: 20px;
