@@ -20,16 +20,19 @@ function ZipCodeModal({ isOpen, onRequestClose, onZipCodeSubmit }) {
       contentLabel="Zip Code Modal"
       className="modalContainer"
     >
-      <h2>Enter ZIP Code</h2>
+      <h3>Enter ZIP Code</h3>
       <form onSubmit={handleSubmit}>
         <input
           autoFocus
+          className="inputZip"
           type="text"
+          inputMode="numeric"
+          pattern="[0-9]*"
           value={zipCode}
           onChange={(e) => setZipCode(e.target.value)}
           placeholder="ZIP Code"
         />
-        <button type="submit">Submit</button>
+        <button disabled={zipCode.length < 5 ? true : false} className="btnSubmit" type="submit">Submit</button>
       </form>
     </Modal>
   );

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchWeather } from "./store/weatherSlice";
+import { fetchWeather, resetData } from "./store/weatherSlice";
 import ZipCodeModal from "./components/ZipCodeModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusSquare, faMinusSquare } from "@fortawesome/free-solid-svg-icons";
@@ -24,15 +24,15 @@ function App() {
         .includes("rain");
       rainingMessage = isRaining
         ? "No, you shouldn't it's raining outside."
-        : `Yes, it's not rain but the weather is ${data?.current?.weather_descriptions[0]} outside.`;
+        : `Yes, you can. It's not rain. The weather is ${data?.current?.weather_descriptions[0]} outside.`;
 
       sunscreenMessage =
         data?.current?.uv_index > 3
           ? "Yes, you should wear sunscreen."
           : "No, you don't have to. The UV index is a bit low right now.";
 
-      windMessage =
-        data?.current?.wind_speed > 15
+      windMessage = (!isRaining &&
+        data?.current?.wind_speed > 15)
           ? "Yes, your kite will fly high."
           : "No, the wind speed is getting low.";
     } else {
@@ -50,6 +50,7 @@ function App() {
   };
 
   const handleZipCodeSubmit = (zipCode) => {
+    dispatch(resetData());
     dispatch(fetchWeather(zipCode));
     closeModal();
   };
@@ -65,6 +66,7 @@ function App() {
   return (
     <div className="App">
       <div className="screenContainer">
+        <h2>Weather App</h2>
         <button
           disabled={loading}
           className="btnEnterZipCode"
@@ -76,7 +78,7 @@ function App() {
         {error && <p className="txtError">Error: {error}</p>}
         {data && (
           <div>
-            <h2>Weather Information</h2>
+            <h3>Weather Information</h3>
             <p>Location: {data.location.name}</p>
             <p>Temperature: {data.current.temperature}°C</p>
           </div>

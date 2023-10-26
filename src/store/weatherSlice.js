@@ -12,15 +12,21 @@ export const fetchWeather = createAsyncThunk('weather/fetchWeather', async (zipc
     const response = await axios.get(`http://localhost:3100/weather?zipcode=${zipcode}`);
     return response.data;
   } catch (error) {
-    alert(error?.message);
-    return rejectWithValue('An error occurred while fetching weather data');
+    // alert(error?.response?.data?.message);
+    return rejectWithValue(error?.response?.data?.message || 'An error occurred while fetching weather data');
   }
 });
 
 const weatherSlice = createSlice({
   name: 'weather',
   initialState,
-  reducers: {},
+  reducers: {
+    resetData: (state) => {
+      state.data = null;
+      state.loading = false;
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchWeather.pending, (state) => {
@@ -37,9 +43,11 @@ const weatherSlice = createSlice({
       })
       .addCase(fetchWeather.rejected, (state, action) => {
         state.loading = false;
-        state.error = 'Failed to fetch weather data';
+        state.error = action.payload || 'Failed to fetch weather data';
       });
   },
 });
+
+export const { resetData } = weatherSlice.actions;
 
 export default weatherSlice.reducer;

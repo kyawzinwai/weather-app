@@ -5,4 +5,11 @@
   padding: 20px;
   border-radius: 5px;
 }
-.btn
+.inputZip {
+  height: 30px;
+}
+.btnSubmit {
+  margin-left: 20px;
+  background-color: #eb8634;
+  color: #ffffff;
+}
