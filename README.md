@@ -15,5 +15,5 @@ npm run dev
 
 ```sh
 npm install
-node index.js
+node app.js
 ```
