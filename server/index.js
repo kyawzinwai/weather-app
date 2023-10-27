@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require("express");
 const axios = require("axios");
 const morgan = require("morgan");
@@ -53,7 +55,7 @@ app.use((req, res, next) => {
 app.get("/weather", async (req, res) => {
   try {
     const { zipcode } = req.query;
-    const weatherStackApiKey = "610acf4c1d203448cd6f671955c5e8aa";
+    const weatherStackApiKey = process.env.WEATHERSTACK_API_KEY;
     const response = await axios.get(
       `http://api.weatherstack.com/current?access_key=${weatherStackApiKey}&query=${zipcode},ho%20chi%20%minh`
     );
