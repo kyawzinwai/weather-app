@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import "../styles/ZipCodeModal.css";
+import "../styles/ZipCodeModal.scss";
 
 Modal.setAppElement("#root");
 

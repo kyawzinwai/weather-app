@@ -5,7 +5,7 @@ import ZipCodeModal from "./components/ZipCodeModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusSquare, faMinusSquare } from "@fortawesome/free-solid-svg-icons";
 
-import "./styles/WeatherScreen.css";
+import "./styles/WeatherScreen.scss";
 import faqData from "./mock/FAQ";
 
 function App() {
@@ -22,8 +22,11 @@ function App() {
       const isRaining = data?.current?.weather_descriptions[0]
         ?.toLowerCase()
         .includes("rain");
-      rainingMessage = isRaining
-        ? "No, you shouldn't it's raining outside."
+      const isThunderstorm = data?.current?.weather_descriptions[0]
+        ?.toLowerCase()
+        .includes("thunderstorm");
+      rainingMessage = isRaining || isThunderstorm
+        ? `No, you shouldn't. It's ${data?.current?.weather_descriptions[0]} outside.`
         : `Yes, you can. It's not rain. The weather is ${data?.current?.weather_descriptions[0]} outside.`;
 
       sunscreenMessage =
