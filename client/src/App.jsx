@@ -1,48 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchWeather, resetData } from "./store/weatherSlice";
-import ZipCodeModal from "./components/ZipCodeModal";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlusSquare, faMinusSquare } from "@fortawesome/free-solid-svg-icons";
-
-import "./styles/WeatherScreen.scss";
-import faqData from "./mock/FAQ";
+import { resetData } from "./redux/slices/weatherSlice";
+import { fetchWeather } from "./redux/actions/weather";
+import { useTranslation } from 'react-i18next';
+import CommonButton from "./components/elements/CommonButton";
+import WeatherResult from "./components/WeatherResult";
+import FaqSection from "./components/FaqSection";
+import ZipCodeModal from "./components/ZipcodeModal";
+import LanguageSwitchButton from "./components/LanguageSwitchButton";
+import "./styles/weatherScreen.scss";
 
 function App() {
-  const noData = "No data to calculate. Please get the weather data by entering the zipcode.";
   const dispatch = useDispatch();
-  const { data, loading, error } = useSelector((state) => state.weather);
+  const { loading } = useSelector((state) => state.weather);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [expandedItems, setExpandedItems] = useState([]);
-  const [answers, setAnswers] = useState([]);
-
-  useEffect(() => {
-    let rainingMessage, sunscreenMessage, windMessage;
-    if (data != null) {
-      const isRaining = data?.current?.weather_descriptions[0]
-        ?.toLowerCase()
-        .includes("rain");
-      const isThunderstorm = data?.current?.weather_descriptions[0]
-        ?.toLowerCase()
-        .includes("thunderstorm");
-      rainingMessage = isRaining || isThunderstorm
-        ? `No, you shouldn't. It's ${data?.current?.weather_descriptions[0]} outside.`
-        : `Yes, you can. It's not rain. The weather is ${data?.current?.weather_descriptions[0]} outside.`;
-
-      sunscreenMessage =
-        data?.current?.uv_index > 3
-          ? "Yes, you should wear sunscreen."
-          : "No, you don't have to. The UV index is a bit low right now.";
-
-      windMessage = (!isRaining &&
-        data?.current?.wind_speed > 15)
-          ? "Yes, your kite will fly high."
-          : "No, the wind speed is getting low.";
-    } else {
-      rainingMessage = sunscreenMessage = windMessage = noData;
-    }
-    setAnswers([rainingMessage, sunscreenMessage, windMessage]);
-  }, [data]);
+  const { t } = useTranslation();
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -58,62 +30,14 @@ function App() {
     closeModal();
   };
 
-  const toggleAnswer = (index) => {
-    if (expandedItems.includes(index)) {
-      setExpandedItems(expandedItems.filter((item) => item !== index));
-    } else {
-      setExpandedItems([...expandedItems, index]);
-    }
-  };
-
   return (
     <div className="App">
       <div className="screenContainer">
-        <h2>Weather App</h2>
-        <button
-          disabled={loading}
-          className="btnEnterZipCode"
-          onClick={openModal}
-        >
-          Enter ZIP Code
-        </button>
-        {loading && <p>Loading...</p>}
-        {error && <p className="txtError">Error: {error}</p>}
-        {data && (
-          <div>
-            <h3>Weather Information</h3>
-            <p>Location: {data.location.name}</p>
-            <p>Temperature: {data.current.temperature}°C</p>
-          </div>
-        )}
-        <div className="faqContainer">
-          {faqData.map((item, index) => (
-            <div
-              key={index}
-              className="faqItem"
-              id={`faqItem-${index}`}
-              onClick={() => toggleAnswer(index)}
-            >
-              <div className="faqQuestion">
-                {item.question}
-                <span className="arrow">
-                  {expandedItems.includes(index) ? (
-                    <FontAwesomeIcon icon={faMinusSquare} />
-                  ) : (
-                    <FontAwesomeIcon icon={faPlusSquare} />
-                  )}
-                </span>
-              </div>
-              <div
-                className={`faqAnswer ${
-                  expandedItems.includes(index) ? "active" : ""
-                }`}
-              >
-                {answers[index]}
-              </div>
-            </div>
-          ))}
-        </div>
+        <LanguageSwitchButton />
+        <h2>{t('app.title')}</h2>
+        <CommonButton loading={loading} className={"btnEnterZipCode"} text={t("enterZipCodeButton")} onClick={openModal} />
+        <WeatherResult />
+        <FaqSection />
       </div>
       <ZipCodeModal
         isOpen={isModalOpen}

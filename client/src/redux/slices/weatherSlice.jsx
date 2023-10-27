@@ -1,21 +1,11 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchWeather } from '../actions/weather';
 
 const initialState = {
   data: null,
   loading: false,
   error: null,
 };
-
-export const fetchWeather = createAsyncThunk('weather/fetchWeather', async (zipcode, { rejectWithValue }) => {
-  try {
-    const response = await axios.get(`http://localhost:3100/weather?zipcode=${zipcode}`);
-    return response.data;
-  } catch (error) {
-    // alert(error?.response?.data?.message);
-    return rejectWithValue(error?.response?.data?.message || 'An error occurred while fetching weather data');
-  }
-});
 
 const weatherSlice = createSlice({
   name: 'weather',

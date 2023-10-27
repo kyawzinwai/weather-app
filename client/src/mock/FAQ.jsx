@@ -1,12 +1,12 @@
 const faqData = [
   {
-    question: "Should I go outside?",
+    questionKey: 'faq.shouldIGoOutside',
   },
   {
-    question: "Should I wear sunscreen?",
+    questionKey: 'faq.shouldIWearSunscreen',
   },
   {
-    question: "Can I fly my kite?",
+    questionKey: 'faq.canIFlyMyKite',
   },
 ];
 

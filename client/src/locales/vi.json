@@ -1,0 +1,23 @@
+{
+  "app.title": "Ứng dụng thời tiết",
+  "enterZipCodeButton": "Nhập Mã Bưu Điện",
+  "loading": "Đang tải...",
+  "error": "Lỗi: {{error}}",
+  "weatherInfo": "Thông Tin Thời Tiết",
+  "location": "Vị trí: {{location}}",
+  "temperature": "Nhiệt độ: {{temperature}}°C",
+  "faq.noDataMessage": "Không có dữ liệu để tính toán. Vui lòng nhập mã bưu điện để lấy thông tin thời tiết.",
+  "faq.shouldIGoOutside": "Có nên ra ngoài không?",
+  "faq.shouldIWearSunscreen": "Có nên đội kem chống nắng không?",
+  "faq.canIFlyMyKite": "Có thể thả diều không?",
+  "faq.rainingMessage": "Không, bạn không nên. Bên ngoài đang {{weatherDescription}}.",
+  "faq.sunsceenMessage": "Có, bạn nên đội kem chống nắng.",
+  "faq.windMessage": "Có, diều của bạn sẽ bay cao.",
+  "faq.rainingMessageAlt": "Có, bạn có thể. Không có mưa. Thời tiết là {{weatherDescription}}.",
+  "faq.sunscreenMessageAlt": "Không, bạn không cần phải. Chỉ số tia tử ngoại đang thấp.",
+  "faq.windMessageAlt": "Không, tốc độ gió đang giảm.",
+  "zipcodeModal.enterZipCode": "Nhập mã bưu điện",
+  "zipcodeModal.inputHelperTxt": "* Chỉ nhập số",
+  "zipcodeModal.zipCodePlaceholder": "Mã bưu điện",
+  "zipcodeModal.submitBtn": "Gửi"
+}

@@ -43,3 +43,14 @@
 .faqItem.active .faqAnswer {
   display: block; /* Show answers when .faqItem has the active class */
 }
+.languageSwitch {
+  display: flex;
+  flex-direction: row;
+}
+.langSwitchBtnWrapper {
+  padding-right: 5px;
+}
+.btnLangSwitch {
+  background-color: #ab8649;
+  color: #ffffff;
+}
