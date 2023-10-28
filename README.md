@@ -21,7 +21,7 @@ npm run dev
 ## Features
 The Weather App offers the following features:
 
-- Get weather information by zipcode: According to the WeatherStack Documentation, you can pass a UK/Canada/US ZIP code to the API, and the app will auto-detect the associated location.
+- Get weather information by zipcode: According to the WeatherStack Documentation, you can only pass a UK/Canada/US ZIP code to the API with Free Plan, and the app will auto-detect the associated location.
 - FAQ answers depend on the weather information.
 - Multi-language support: The app supports both English and Vietnamese.
 
