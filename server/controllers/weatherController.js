@@ -6,7 +6,7 @@ async function getWeather(req, res) {
     const { zipcode } = req.query;
     const weatherStackApiKey = config.weatherStackApiKey;
     const response = await axios.get(
-      `http://api.weatherstack.com/current?access_key=${weatherStackApiKey}&query=${zipcode},ho%20chi%20%minh`
+      `http://api.weatherstack.com/current?access_key=${weatherStackApiKey}&query=${zipcode}`
     );
     res.json(response.data);
   } catch (error) {
