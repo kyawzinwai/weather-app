@@ -15,7 +15,7 @@ function LanguageSwitchButton() {
       <div className="langSwitchBtnWrapper">
         <CommonButton className={"btnLangSwitch"} text={'English'} onClick={() => changeLanguage("en")} />
       </div>
-      <div>
+      <div className="langSwitchBtnWrapper">
         <CommonButton className={"btnLangSwitch"} text={'Tiếng Việt'} onClick={() => changeLanguage("vi")} />
       </div>
     </div>

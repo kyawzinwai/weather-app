@@ -4,17 +4,20 @@
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 5px;
-}
-.inputZip {
-  height: 30px;
-}
-.inputHelperTxt {
-  color: #ff1100;
-  font-weight: 500;
-  font-size: 12px;
-}
-.btnSubmit {
-  margin-left: 20px;
-  background-color: #eb8634;
-  color: #ffffff;
+
+  .inputZip {
+    height: 30px;
+  }
+
+  .inputHelperTxt {
+    color: #ff1100;
+    font-weight: 500;
+    font-size: 12px;
+  }
+
+  .btnSubmit {
+    margin-left: 20px;
+    background-color: #eb8634;
+    color: #ffffff;
+  }
 }
