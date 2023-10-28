@@ -14,6 +14,7 @@
   "faq.sunsceenMessage": "Có, bạn nên đội kem chống nắng.",
   "faq.windMessage": "Có, diều của bạn sẽ bay cao.",
   "faq.rainingMessageAlt": "Có, bạn có thể. Không có mưa. Thời tiết là {{weatherDescription}}.",
+  "faq.sunscreenMessage": "Có, bạn nên đội kem chống nắng.",
   "faq.sunscreenMessageAlt": "Không, bạn không cần phải. Chỉ số tia tử ngoại đang thấp.",
   "faq.windMessageAlt": "Không, tốc độ gió đang giảm.",
   "zipcodeModal.enterZipCode": "Nhập mã bưu điện",
